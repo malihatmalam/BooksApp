@@ -79,6 +79,7 @@ public class FetchBook extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+
         values = new ArrayList<>();
 
         try {
@@ -134,6 +135,7 @@ public class FetchBook extends AsyncTask<String, Void, String> {
                     itemData.itemDescription = desc;
                     itemData.itemImage = image;
 
+                    values.add(itemData);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
