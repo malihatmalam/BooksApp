@@ -2,6 +2,7 @@ package com.example.booksapp;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,19 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        itemData data = values.get(position);
+        final itemData data = values.get(position);
         holder.titleText.setText(data.itemTitle);
         holder.authorText.setText(data.itemAuthor);
+
+        // ketika diklik akan berpindah ke aktivity Detailactivity
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("DATA", data);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
